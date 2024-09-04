@@ -1,0 +1,32 @@
+services:
+  app-drf-authentication:
+    build:
+      context: ../../FastAPI-Authentication/
+      dockerfile: Dockerfile
+    container_name: app-drf-authentication
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    env_file:
+      - ../.env
+    depends_on:
+      - postgres
+    volumes:
+      - ../../FastAPI-Authentication:/FastAPI-Authentication
+    command: ["python", "-Om", "src"]
+    networks:
+      - ppostgres.network
+  redis:
+    image: "redis:7-alpine"
+    container_name: "redis"
+    ports:
+      - "6379:6379"
+    depends_on:
+      - app-drf-authentication
+    networks:
+      - ppostgres.network
+
+networks:
+  ppostgres.network:
+    driver: bridge
