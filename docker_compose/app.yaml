@@ -1,9 +1,9 @@
 services:
-  app-drf-authentication:
+  app:
     build:
-      context: ../../FastAPI-Authentication/
+      context: ../../FastAPI-simple-boilerplate/
       dockerfile: Dockerfile
-    container_name: app-drf-authentication
+    container_name: app
     ports:
       - "8000:8000"
     expose:
@@ -13,17 +13,8 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ../../FastAPI-Authentication:/FastAPI-Authentication
+      - ../../FastAPI-simple-boilerplate:/FastAPI-simple-boilerplate
     command: ["python", "-Om", "src"]
-    networks:
-      - ppostgres.network
-  redis:
-    image: "redis:7-alpine"
-    container_name: "redis"
-    ports:
-      - "6379:6379"
-    depends_on:
-      - app-drf-authentication
     networks:
       - ppostgres.network
 

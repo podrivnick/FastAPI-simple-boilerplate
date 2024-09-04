@@ -1,4 +1,4 @@
-# FastAPI Boilerplate
+# FastAPI Boilerplate With Postgres
 
 A non-commercial FastAPI boilerplate
 ### Installation and Running
