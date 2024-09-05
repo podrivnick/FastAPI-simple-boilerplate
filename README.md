@@ -1,6 +1,6 @@
 # FastAPI Boilerplate With Postgres
 
-A non-commercial FastAPI boilerplate
+A non-commercial FastAPI boilerplate, that using DI for containerization, didiator for mediators
 ### Installation and Running
 
 These instructions will help you run the project.
